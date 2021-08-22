@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegCalendarAlt, FaRegCalendar, FaInbox } from 'react-icons/fa';
+import { FaRegCalendarAlt, FaRegCalendar, FaInbox, FaCheck } from 'react-icons/fa';
 
 const Sidebar = ({ selectedTab, setSelectedTab }) => {
    return (
@@ -24,6 +24,13 @@ const Sidebar = ({ selectedTab, setSelectedTab }) => {
          >
             <FaRegCalendar className="icon" />
             Next 7 days
+         </div>
+         <div
+            className={selectedTab === 'COMPLETED' ? 'active' : ''}
+            onClick={() => setSelectedTab('COMPLETED')}
+         >
+            <FaCheck className="icon" />
+            Completed
          </div>
       </div>
    );

@@ -77,7 +77,18 @@ const AddTask = ({ onCancle, onAddTask }) => {
    );
 };
 
-const ActionButton = ({ performAction, id }) => {
+const ActionButton = ({ performAction, id, isCompleted }) => {
+   if (isCompleted === 'COMPLETED') {
+      return (
+         <div className="action-buttons">
+            <FaTrashAlt
+               className="item"
+               onClick={() => performAction(STATUS.DELETE, id)}
+            />
+         </div>
+      );
+   }
+
    return (
       <div className="action-buttons">
          <FaCheck className="item" onClick={() => performAction(STATUS.COMPLETED, id)} />
@@ -120,7 +131,11 @@ const TaskItems = ({ selectedTab, tasks, performAction }) => {
                   <p className="task-date">
                      {dateFnsFormat(new Date(task.date), DATE_FORMAT)}
                   </p>
-                  <ActionButton performAction={performAction} id={task.id} />
+                  <ActionButton
+                     performAction={performAction}
+                     isCompleted={task.status}
+                     id={task.id}
+                  />
                </div>
             ))
          ) : (

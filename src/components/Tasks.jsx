@@ -165,6 +165,7 @@ const Tasks = ({ selectedTab }) => {
                tasks[index].status = STATUS.COMPLETED;
                setTasks([...tasks]);
                updateLocalStorageItem(tasks);
+               NotificationManager.success('Task Completed.', 'Success', 1000);
             }
             break;
 
@@ -173,7 +174,7 @@ const Tasks = ({ selectedTab }) => {
                const newItems = tasks.filter((task) => task.id !== id);
                setTasks(newItems);
                updateLocalStorageItem(newItems);
-               NotificationManager.success('Task Deleted Successfully,', 'Success', 1000);
+               NotificationManager.success('Task Deleted Successfully.', 'Success', 1000);
             }
             break;
 
@@ -185,7 +186,7 @@ const Tasks = ({ selectedTab }) => {
                tasks[index].text = newText;
                setTasks([...tasks]);
                updateLocalStorageItem(tasks);
-               NotificationManager.success('Task Updated Successfully,', 'Success', 1000);
+               NotificationManager.success('Task Updated Successfully.', 'Success', 1000);
             }
             break;
 
